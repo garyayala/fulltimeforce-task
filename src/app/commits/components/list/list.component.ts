@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-list',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  list: any[];
 
-  constructor() { }
+  constructor(private api: ApiService) { }
 
   ngOnInit(): void {
+    this.getList();
   }
 
+  private getList(){
+    this.api.getList()
+    .subscribe(
+      (data: any) => {
+        this.list = data;
+      }
+    );
+  }
 }

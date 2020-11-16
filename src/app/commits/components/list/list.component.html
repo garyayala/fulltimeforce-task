@@ -1,1 +1,42 @@
-<p>list works!</p>
+<div class="container-fluid my-5">
+  <div class="row my-5 my-sm-3" *ngIf="list && list.length>0">
+    <div class="col">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th class="text-white">#</th>
+              <th class="text-white">Date</th>
+              <th class="text-white">Author</th>
+              <th class="text-white">Commit Message</th>
+              <th class="text-white text-center">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let obj of list;let i = index">
+              <td>{{i+1}}</td>
+              <td>{{obj.commit.committer.date | amDateFormat : 'DD/MM/YYYY hh:mm a'}}</td>
+              <td>
+                {{obj.commit.author.name}}
+              </td>
+              <td>
+                {{obj.commit.message}}
+              </td>
+              <td class="text-center">
+                <mat-icon class="pointer" [routerLink]="[obj.sha]">search</mat-icon>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="row my-5" *ngIf="!list || list.length==0">
+    <div class="col">
+      <div class="alert alert-warning">
+        <p><mat-icon class="warning align-middle mr-1">warning</mat-icon>No se encontraron resultados.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
