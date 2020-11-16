@@ -13,11 +13,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { SigninComponent } from './signin/signin.component';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidenavComponent
+    SidenavComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    HttpClientModule
+    FormsModule,
+    HttpClientModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy}

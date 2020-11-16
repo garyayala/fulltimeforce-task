@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { SigninComponent } from './signin/signin.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
   {
+    path: 'signin'
+    , component: SigninComponent
+  },
+  {
     path: 'main',
     component: SidenavComponent,
+    canActivateChild: [ AuthGuard ],
+    canActivate: [ AuthGuard ],
     children: [
       {
         path: 'commits',

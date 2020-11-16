@@ -1,0 +1,47 @@
+<div class="container h-100">
+  <div class="row h-100 align-self-center justify-content-center">
+    <div class="col-sm-10 col-md-6 h-100 d-flex align-items-center">
+      <mat-card class="w-100">
+        <mat-card-content>
+          <div class="container-fluid">
+            <form #f="ngForm" autocomplete="off" novalidate>
+              <div class="row" *ngIf="!isValid">
+                <div class="col alert alert-danger">
+                  El usuario o clave son incorrectos
+                </div>
+              </div>
+              <div class="row">
+                <mat-form-field class="col">
+                  <mat-label>Usuario</mat-label>
+                  <input matInput placeholder="" name="username" [(ngModel)]="authentication.username" required
+                  (keyup.enter)="!f.invalid ? signin() : null">
+                  <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field class="col">
+                  <mat-label>Contraseña</mat-label>
+                  <input type="password" matInput placeholder="" name="password" [(ngModel)]="authentication.password" required
+                  (keyup.enter)="!f.invalid ? signin() : null">
+                  <mat-icon matSuffix>lock</mat-icon>
+                </mat-form-field>
+              </div>
+            </form>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col">
+                <button mat-button mat-raised-button color="primary"
+                  class="w-100" [disabled]="f.invalid"
+                  (click)="signin()">Ingresar</button>
+              </div>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
