@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-list',
@@ -15,11 +16,15 @@ export class ListComponent implements OnInit {
     this.getList();
   }
 
-  private getList(){
+  getList(): void{
+    this.list = [];
     this.api.getList()
     .subscribe(
       (data: any) => {
         this.list = data;
+      },
+      (error: HttpErrorResponse)  => {
+
       }
     );
   }

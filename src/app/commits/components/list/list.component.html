@@ -1,4 +1,9 @@
 <div class="container-fluid my-5">
+  <div class="row my-5 my-sm-3">
+    <div class="col text-right">
+      <a (click)="getList()" class="link pointer"><mat-icon class="mr-1 align-middle">refresh</mat-icon>Refresh</a>
+    </div>
+  </div>
   <div class="row my-5 my-sm-3" *ngIf="list && list.length>0">
     <div class="col">
       <div class="table-responsive">
