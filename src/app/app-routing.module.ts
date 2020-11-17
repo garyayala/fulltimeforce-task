@@ -13,8 +13,9 @@ const routes: Routes = [
   {
     path: 'main',
     component: SidenavComponent,
-    canActivateChild: [ AuthGuard ],
-    canActivate: [ AuthGuard ],
+    // Disabled authentication check because it was not required
+    // canActivateChild: [ AuthGuard ],
+    // canActivate: [ AuthGuard ],
     children: [
       {
         path: 'commits',
